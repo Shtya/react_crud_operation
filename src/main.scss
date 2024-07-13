@@ -1,0 +1,320 @@
+*{
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+$sm  : 640px     ;
+$md  : 768px     ;
+$lg  : 1024px    ;
+$xl  : 1280px    ;
+$xxl : 1536px    ;
+
+
+.container{
+  margin: auto;
+  width: 95% !important;
+  @media (min-width : $sm ) {}
+  @media (min-width : $md ) {}
+  @media (min-width : $lg ) {}
+  @media (min-width : $xl ) { width: 1200px !important;}
+  @media (min-width : $xxl) {}
+}
+
+
+.products-card .container{
+  display: grid;
+  grid-template-columns: repeat(auto-fit , minmax(350px , 1fr));
+  gap: 20px;
+  padding: 20px;
+}
+.createProduct{
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 30px 0;
+  button{
+    max-width: 300px;
+    padding: 10px;
+    text-transform: uppercase;
+    transition: .4s;
+    &:hover{opacity: .7;}
+  }
+}
+.product-card{
+  background-color: #f1f1f1;
+  padding: 5px ;
+  img{
+    width: 100%;
+    height: 300px;
+    -o-object-fit: cover;
+    object-fit: contain;
+    object-position: bottom;
+    border: 4px double #1114;
+    border-bottom: unset;
+    // border-radius: 80px;
+    margin-bottom: 10px;
+  }
+  h3 , p , .price , ul , .btns{padding: 0 15px;}
+  h3{
+    font-size: 20px;
+    font-style: italic;
+  }
+  p{
+    font-size: 16px;
+  }
+  > ul{
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 5px;
+    margin: 10px 0;
+    li{
+      width: 25px;
+      height: 25px;
+      border-radius: 50%;
+      cursor: pointer;
+      border: 1px dotted #ccc;
+    }
+  }
+
+  .cate{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    h4{
+      font-size: 18px;
+      color: blue;
+      text-transform: capitalize;
+    }
+  }
+
+  .price{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 10px;
+    img{
+      width: 45px;
+      height: 45px;
+      border-radius: 50%;
+      margin-bottom: 20px;
+      margin: auto 0;
+    }
+    span{
+      font-weight: 600;
+      color: crimson;
+      font-size: 18px;
+    }
+  }
+  
+  .btns{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    button{
+      border-radius: 2px;
+    width: 49%;
+    background: #432dc4;
+    padding: 9px 10px;
+    color: white;
+    font-weight: 300;
+    font-family: sans-serif;
+    transition: 0.4s;
+    text-transform: uppercase;
+      &:hover{
+        opacity: .8;
+        border-radius: 0;
+      }
+  }  
+    button:nth-of-type(2){
+      background-color: #ab0b1c ;
+    }
+  }
+}
+
+
+// utils 
+.modal{
+  position: fixed;
+  background: #ccc1 ;
+  width: 100%;
+  height: 100%;
+  inset: 0;
+  backdrop-filter: blur(10px);
+  z-index: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 20px;
+
+  .modal-wrapper{
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
+    background-color: white; /* Example background color */
+    padding: 20px;
+    border-radius: 8px; /* Example border radius */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    max-width: 400px;
+    width: 100%;
+    margin: auto;
+    &.close-wrapper{ clip-path: polygon(0 100%, 100% 100%, 100% 100%, 0% 100%);}
+
+    .title-header{
+      font-size: 20px;
+      text-transform: uppercase;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+
+      span:nth-of-type(2){
+        font-family: sans-serif;
+        font-weight: 600;
+        rotate: -1deg;
+        cursor: pointer;
+        color: #f27474;
+      }
+    }
+    form{
+      display: flex;
+      align-items: flex-start;
+      flex-direction: column;
+      label{
+        font-size: 16px;
+        text-transform: capitalize;
+        margin-top: 10px;
+        font-weight: 500;
+        color: #333;
+      }
+      input{
+        width: 100%;
+        border: 1px solid rgb(0 0 0 / 11%);
+        padding: 5px;
+        border-radius: 7px;
+        font-size: 16px;
+        box-shadow: 0 3px 10px #1112;
+        outline: none;
+      }
+      ul{
+        li{}
+      }
+      button{
+        margin-top: 20px;
+      }
+    }
+  }
+
+  .available-colors{
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 5px;
+    margin: 10px 0;
+    flex-wrap: wrap;
+    span{
+      color: white;
+      padding: 5px;
+      font-size: 10px;
+      cursor: pointer;
+      transition: .3s;
+      &:hover{opacity: .6;}
+    }
+  }
+  .colors{
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 5px;
+    padding: 0;
+    li{
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      cursor: pointer;
+      transition: .3s;
+      &:hover{
+        opacity: .7;
+      }
+    }
+  }
+
+  .error{
+    font-size: 12px;
+    color: crimson;
+    text-transform: capitalize;
+  }
+}
+
+.drop-down{
+  width: 100%;
+  position: relative;
+  .drop-value{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    cursor: pointer;
+    padding: 10px;
+    border: 1px solid rgb(0 0 0 / 11%);
+    padding: 5px;
+    border-radius: 7px;
+    font-size: 16px;
+    box-shadow: 0 3px 10px #1112;
+
+    .title{
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 5px;
+      span{
+        font-size: 18px;
+      }
+    }
+    .arrow{
+      font-family: monospace;
+      font-weight: 500;
+      rotate: 90deg;
+    }
+  }
+  ul{
+    width: 100%;
+    border: 1px solid rgb(0 0 0 / 11%);
+    border-radius: 7px;
+    font-size: 16px;
+    box-shadow: 0 3px 10px #1112;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 0;
+    margin-top: 5px;
+
+    display: none;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height .2s ease-out;
+    li{
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 5px 10px;
+      transition: .3s;
+      width: 100%;
+      cursor: pointer;
+      &:hover{
+        background-color: #f1f1f1;
+      }
+      span{}
+    }
+  }
+}
+
+
+// helpers 
+.btn{
+  width: 100%;
+    padding: 5px 10px;
+    background: #432dc4;
+    color: white;
+    font-weight: 600;
+    font-family: sans-serif;
+    text-transform: capitalize;
+    font-style: italic;
+}
